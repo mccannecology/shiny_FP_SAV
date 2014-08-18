@@ -86,7 +86,7 @@ shinyServer(function(input, output) {
     # URL varies depending on input 
     url <- paste("https://s3.amazonaws.com/model_data/",sim_numb(),"/cover.jpg",sep="")
     
-    download.file(url,"cover.jpg",mode="wb")
+    download(url,"cover.jpg",mode="wb")
     
     filename <- normalizePath(file.path('./',paste('cover','.jpg', sep='')))
     
@@ -115,7 +115,7 @@ shinyServer(function(input, output) {
     # URL varies depending on input 
     url <- paste("https://s3.amazonaws.com/model_data/",sim_numb(),"/initial.jpg",sep="")
     
-    download.file(url,"initial.jpg",mode="wb")
+    download(url,"initial.jpg",mode="wb")
     
     filename <- normalizePath(file.path('./',paste('initial','.jpg', sep='')))
     
@@ -144,7 +144,7 @@ shinyServer(function(input, output) {
     # URL varies depending on input 
     url <- paste("https://s3.amazonaws.com/model_data/",sim_numb(),"/middle.jpg",sep="")
     
-    download.file(url,"middle.jpg",mode="wb")
+    download(url,"middle.jpg",mode="wb")
     
     filename <- normalizePath(file.path('./',paste('middle','.jpg', sep='')))
     
@@ -173,7 +173,7 @@ shinyServer(function(input, output) {
     # URL varies depending on input 
     url <- paste("https://s3.amazonaws.com/model_data/",sim_numb(),"/final.jpg",sep="")
     
-    download.file(url,"final.jpg",mode="wb")
+    download(url,"final.jpg",mode="wb")
     
     filename <- normalizePath(file.path('./',paste('final','.jpg', sep='')))
     
@@ -202,7 +202,7 @@ shinyServer(function(input, output) {
     # URL varies depending on input 
     url <- paste("https://s3.amazonaws.com/model_data/",sim_numb(),"/nutrients.jpg",sep="")
   
-    download.file(url,"nutrients.jpg",mode="wb")
+    download(url,"nutrients.jpg",mode="wb")
   
     filename <- normalizePath(file.path('./',paste('nutrients','.jpg', sep='')))
   
@@ -248,7 +248,7 @@ shinyServer(function(input, output) {
                  wind_shape2(),"_",
                  ".jpg",sep="")
     
-    download.file(url,"altstate.jpg",mode="wb")
+    download(url,"altstate.jpg",mode="wb")
     
     filename <- normalizePath(file.path('./',paste('altstate','.jpg', sep='')))
     

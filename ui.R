@@ -1,6 +1,7 @@
 # ui.R
 
 library(shiny)
+library(downloader)
 
 shinyUI(pageWithSidebar(
   
