@@ -16,7 +16,7 @@ shinyUI(pageWithSidebar(
     
     h3("User Inputs"),
     selectInput("TOTALN", 
-                "TOTALN:",
+                "Total N (mg/L):",
                 choices=c(0.1,0.5,1,2,3,4,5,6,7,8,9,10),
                 selected=5
     ),
@@ -26,8 +26,8 @@ shinyUI(pageWithSidebar(
                 selected="rectangle"
     ),
     selectInput("size", 
-                "Size (sq.m):",
-                choices=list("~400"="small","~1600"="large")
+                "Size (ha):",
+                choices=list("~0.04"="small","~0.16"="large","~0.64"="larger")
     ),
     selectInput("initial_perc_FP_cover", 
                 "Initial FP cover(%):",
@@ -40,7 +40,7 @@ shinyUI(pageWithSidebar(
                 selected=15
     ),
     selectInput("shadingbyFP", 
-                "FP shading SAV:",
+                "FP shading SAV coefficient:",
                 choices=c(0.02,0.04,0.08)
     ),
     # modify this one so the input is more user-friendly 
@@ -49,7 +49,7 @@ shinyUI(pageWithSidebar(
                 "Wind strength:",
                 choices=list("weak"=4,"strong"=0.2)
     ),
-    selectInput("wind_direction", 
+    selectInput("Prevailing wind direction", 
                 "wind_direction:",
                 choices=c("all","up")
     ),
