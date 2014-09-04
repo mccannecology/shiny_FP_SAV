@@ -1,7 +1,7 @@
 require(prodlim)
 
 # read in csv of parameters   
-data <- read.csv("data/output30.csv")
+data <- read.csv("data/LOOKUP_TABLE.csv")
 
 # remove all columns from "data" that are not user-inputs 
 data <- data[,c("TOTALN",

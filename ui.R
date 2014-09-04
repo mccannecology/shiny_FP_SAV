@@ -27,7 +27,10 @@ shinyUI(pageWithSidebar(
     ),
     selectInput("size", 
                 "Size (ha):",
-                choices=list("~0.04"="small","~0.16"="large","~0.64"="larger")
+                choices=list("0.04"="small",
+                             "0.16"="large",
+                             "0.64"="larger",
+                             "2.25"="larger2")
     ),
     selectInput("initial_perc_FP_cover", 
                 "Initial FP cover(%):",
@@ -49,8 +52,8 @@ shinyUI(pageWithSidebar(
                 "Wind strength:",
                 choices=list("weak"=4,"strong"=0.2)
     ),
-    selectInput("Prevailing wind direction", 
-                "wind_direction:",
+    selectInput("wind_direction", 
+                "Prevailing wind direction:",
                 choices=c("all","up")
     ),
     
