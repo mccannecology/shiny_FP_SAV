@@ -253,7 +253,9 @@ shinyServer(function(input, output) {
     filename <- normalizePath(file.path('./',paste('altstate','.jpg', sep='')))
     
     # Return a list containing the filename and alt text
-    list(src = filename)
+    list(src = filename,
+         height=500,
+         width=500)
   
   })
   
@@ -268,7 +270,9 @@ shinyServer(function(input, output) {
          xlim=c(0,1),
          xlab="Wind strength (Prop. mass moved per timestep)"
          )
-  })
+  },
+  width=400,
+  height=400)
   
   output$wind_avg <- renderText({
     signif(
@@ -284,6 +288,74 @@ shinyServer(function(input, output) {
                (0.04+as.numeric(input$wind_shape2)+1)),
           digits=4
           )
+  })
+  
+  ################################
+  # IMAGES FOR MODEL DESCRIPTION #
+  ################################
+  
+  # GROWTH 
+  # if images are stored remotely 
+  output$growth_equation <- renderImage({
+    
+    # URL varies depending on input 
+    url <- "https://s3.amazonaws.com/model_data/Scheffer 2003 growth equations.png"
+                 
+    download(url,"growthEQ.png",mode="wb")
+    
+    filename <- normalizePath(file.path('./',paste('growthEQ','.png', sep='')))
+    
+    # Return a list containing the filename and alt text
+    list(src = filename)
+
+  })
+  
+  # NUTRIENT UPTAKE  
+  # if images are stored remotely 
+  output$uptake_equation <- renderImage({
+    
+    # URL varies depending on input 
+    url <- "https://s3.amazonaws.com/model_data/Scheffer 2003 uptake equations.png"
+    
+    download(url,"uptakeEQ.png",mode="wb")
+    
+    filename <- normalizePath(file.path('./',paste('uptakeEQ','.png', sep='')))
+    
+    # Return a list containing the filename and alt text
+    list(src = filename)
+    
+  })
+  
+  # DEFAULT PARAMETERS 
+  # if images are stored remotely 
+  output$default_parameters <- renderImage({
+    
+    # URL varies depending on input 
+    url <- "https://s3.amazonaws.com/model_data/default_parameters.png"
+    
+    download(url,"defaultPARS.png",mode="wb")
+    
+    filename <- normalizePath(file.path('./',paste('defaultPARS','.png', sep='')))
+    
+    # Return a list containing the filename and alt text
+    list(src = filename)
+    
+  })
+  
+  # WATERBODY SHAPES
+  # if images are stored remotely 
+  output$waterbody_shapes <- renderImage({
+    
+    # URL varies depending on input 
+    url <- "https://s3.amazonaws.com/model_data/waterbody_shapes.png"
+    
+    download(url,"shapes.png",mode="wb")
+    
+    filename <- normalizePath(file.path('./',paste('shapes','.png', sep='')))
+    
+    # Return a list containing the filename and alt text
+    list(src = filename)
+    
   })
   
 })
