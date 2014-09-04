@@ -7,13 +7,7 @@ shinyUI(pageWithSidebar(
   
   headerPanel("Floating Plant-Submerged Plant Interactions"),
   
-  sidebarPanel(
-    h3("Description"),
-    p("A multi-year, 2-d, spatially-explicit, simulation model of interactions between
-      floating and submerged plants in freshwater lakes and ponds. For a complete description 
-      of the model click on the 'Model Description' tab."),
-    hr(),
-    
+  sidebarPanel(    
     h3("User Inputs"),
     selectInput("TOTALN", 
                 "Total N (mg/L):",
@@ -71,6 +65,7 @@ shinyUI(pageWithSidebar(
         tabPanel(title="Model Description",
         h3("Description of the Model"),
         br(),
+        
         h4("Background & Goals"),
         p("This is a multi-year, 2-d, spatially-explicit, simulation model of interactions 
           between floating and submerged plants in freshwater lakes and ponds. The goal of this 
@@ -80,16 +75,19 @@ shinyUI(pageWithSidebar(
           factors were not included. Factors of interest for this model include water body size 
           and shape and wind disturbance.  
          "),
+        
         h4("Growth equations"),
         p("Plant growth is governed  by equations used in Scheffer et al. (2003).
           These equations include nutrient- and light-dependent growth. 
           "),
         imageOutput("growth_equation",height="100%"),
         br(),
+        
         h4("Nutrient uptake equations"),
         p("Nutrient uptake is governed  by the equation used in Scheffer et al. (2003)."),
         imageOutput("uptake_equation",height="50%"),
         br(),
+        
         h4("Parameter names & values"),
         p("Table of parameter names and default values used in Scheffer et al. (2003)."),
         imageOutput("default_parameters",height="25%"),
@@ -99,15 +97,19 @@ shinyUI(pageWithSidebar(
         p("Currently there are five possible water body shapes to choose from."),
         imageOutput("waterbody_shapes",height="25%"),
         br(),
+        
         h4("Initial Conditions"),
         p("Text will go here."),
         br(),
+        
         h4("Seasonality"),
         p("Text will go here."),
         br(),
+        
         h4("Vegetative spread"),
         p("Text will go here."),
         br(),
+        
         h4("Wind-dispersal"),
         p("Text will go here.")
         ),      
