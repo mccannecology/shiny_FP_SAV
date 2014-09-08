@@ -290,6 +290,19 @@ shinyServer(function(input, output) {
           )
   })
   
+  ######################
+  # IMAGES FOR WELCOME # 
+  ######################
+  # if images are saved locally
+  output$alt_states <- renderImage({
+  
+  filename <- file.path("./www/alt_states.jpg")
+  
+  # Return a list containing the filename and alt text
+  list(src = filename, contentType = "image/jpg")
+  
+  }, deleteFile = FALSE)
+  
   ################################
   # IMAGES FOR MODEL DESCRIPTION #
   ################################
