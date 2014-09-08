@@ -293,6 +293,7 @@ shinyServer(function(input, output) {
   ######################
   # IMAGES FOR WELCOME # 
   ######################
+  # PICTURE OF FP-SAV STATES 
   # if images are saved locally
   output$alt_states <- renderImage({
   
@@ -308,36 +309,55 @@ shinyServer(function(input, output) {
   ################################
   
   # GROWTH 
-  # if images are stored remotely 
+  # if images are saved locally
   output$growth_equation <- renderImage({
     
-    # URL varies depending on input 
-    url <- "https://s3.amazonaws.com/model_data/Scheffer 2003 growth equations.png"
-                 
-    download(url,"growthEQ.png",mode="wb")
-    
-    filename <- normalizePath(file.path('./',paste('growthEQ','.png', sep='')))
+    filename <- file.path("./www/growth_equation.jpg")
     
     # Return a list containing the filename and alt text
-    list(src = filename)
+    list(src = filename, contentType = "image/jpg")
+    
+  }, deleteFile = FALSE)
+  
+  # if images are stored remotely 
+  #output$growth_equation <- renderImage({
+    
+    # URL varies depending on input 
+    # url <- "https://s3.amazonaws.com/model_data/Scheffer 2003 growth equations.png"
+                 
+    # download(url,"growthEQ.png",mode="wb")
+    
+    # filename <- normalizePath(file.path('./',paste('growthEQ','.png', sep='')))
+    
+    # Return a list containing the filename and alt text
+    # list(src = filename)
 
-  })
+  # })
   
   # NUTRIENT UPTAKE  
-  # if images are stored remotely 
   output$uptake_equation <- renderImage({
     
-    # URL varies depending on input 
-    url <- "https://s3.amazonaws.com/model_data/Scheffer 2003 uptake equations.png"
-    
-    download(url,"uptakeEQ.png",mode="wb")
-    
-    filename <- normalizePath(file.path('./',paste('uptakeEQ','.png', sep='')))
+    filename <- file.path("./www/nutrient_equation.jpg")
     
     # Return a list containing the filename and alt text
-    list(src = filename)
+    list(src = filename, contentType = "image/jpg")
     
-  })
+  }, deleteFile = FALSE)
+  
+  # if images are stored remotely 
+  # output$uptake_equation <- renderImage({
+    
+    # URL varies depending on input 
+    # url <- "https://s3.amazonaws.com/model_data/Scheffer 2003 uptake equations.png"
+    
+    # download(url,"uptakeEQ.png",mode="wb")
+    
+    # filename <- normalizePath(file.path('./',paste('uptakeEQ','.png', sep='')))
+    
+    # Return a list containing the filename and alt text
+    # list(src = filename)
+    
+  # })
   
   # DEFAULT PARAMETERS 
   # if images are stored remotely 

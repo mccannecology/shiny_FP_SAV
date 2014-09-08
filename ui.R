@@ -171,7 +171,7 @@ shinyUI(pageWithSidebar(
         p(" - Focal threshold (g dw/m2) [focal_thresh]"),
         p(" - Neigh threshold (g dw/m2) [neigh_thresh]"),
         p(" - Amount to colonize (g dw) [amnt_colonize]"),
-        strong("On each time step:"),
+        p("On each time step:"),
         p(" - Any cell that is less than or equal to [focal_thresh]"),
         p(" - and whose biomass of their 8 neighbors is greater than [neigh_thresh]"),
         p(" - will gain [amnt_colonize] on the next time step."),
