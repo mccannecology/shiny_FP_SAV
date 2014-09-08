@@ -72,6 +72,8 @@ shinyUI(pageWithSidebar(
         br(),
         HTML("<strong> - Default Parameters:</strong> Definition of parameters and default values typically used."),
         br(),
+        HTML("<strong> - Wind:</strong> Description of wind dynamics."),
+        br(),
         HTML("<strong> - Initial:</strong> Spatial plot of vegetation, initial."),
         br(),
         HTML("<strong> - Mid-Point:</strong> Spatial plot of vegetation, 1/2 through simulation."),
@@ -82,13 +84,12 @@ shinyUI(pageWithSidebar(
         br(),
         HTML("<strong> - Nutrients:</strong> Plot of nutrient concentrations through time."),
         br(),
-        HTML("<strong> - Wind:</strong> Description of wind dynamics."),
-        br(),
+
         HTML("<strong> - Alt. States:</strong> Plot summarizing multiple simulations from different initial conditions."),
         br(),
         br(),
         h3("Contact:"),
-        p("Please direct any comments, questions, or bug reports to:"),
+        p("Please direct any comments, questions, or error reports to:"),
         HTML("<strong>Michael J. McCann</strong>"),
         br(),
         HTML("Department of Ecology & Evolution"),
@@ -233,6 +234,38 @@ shinyUI(pageWithSidebar(
         p("150")
         ),    
         
+        ############ 
+        # WIND TAB #
+        ############
+        tabPanel(title="Wind",
+        strong("Description of wind dispersal of floating plants:"),
+        p("On each time step:"),
+        p("Some portion of floating plant biomass can be dispersed along the surface of the water by wind."),
+        p("The wind direction is sampled from the Prevailing wind direction (see below). All cells move in the same direction for that time step."),
+        p("The wind strength is governed by a beta distributions which the user selects ('strong' or 'weak')."),
+        p("The proportion of biomass to move on that time step is randomly sampled from the distribution of wind strengths."),
+        p("All cells move the same proportion of biomass for that step."),
+        p("Biomass will move into the destination cell as long as its biomass is not greater than the full threshold (g dw/m2) [full_thresh]."),
+        p("If the cell is 'too full' the biomass stays in its current cell. This allows cells to 'pile up'."),
+        br(),
+        strong("Prevailing wind direction:"),
+        p("The user can choose between two different prevailing wind directions: 'Up' and 'none'"),
+        p("'none' means that the probability of wind blowing in any direction is random and equal."),
+        p("'up' means that the probability of wind blowing up is 0.7 and 0.1 for all other directions"),
+        br(),
+        strong("Frequency distribution of wind strength"),
+        plotOutput("wind"),
+        br(),
+        strong("Average wind strength"),
+        textOutput("wind_avg"),
+        strong("Variance of wind strength"),
+        textOutput("wind_var"),
+        br(),
+        strong("Average wind strength:"),
+        p("On average, on each time step, this proportion of biomass will 
+         be moved in the direction of the wind on that time step")
+        ),
+        
         ############### 
         # INITIAL TAB #
         ###############
@@ -329,38 +362,7 @@ shinyUI(pageWithSidebar(
           Results may differ if this simulation is re-run.
           ")
         ),
-        
-        ############ 
-        # WIND TAB #
-        ############
-        tabPanel(title="Wind",
-        h3("Frequency distribution of wind strength"),
-        plotOutput("wind"),
-        br(),
-        strong("Average wind strength"),
-        textOutput("wind_avg"),
-        strong("Variance of wind strength"),
-        textOutput("wind_var"),
-        br(),
-        strong("Description of wind dispersal of floating plants:"),
-        p("On each time step:"),
-        p("Some portion of floating plant biomass can be dispersed along the surface of the water by wind."),
-        p("The wind direction is sampled from the Prevailing wind direction (see below). All cells move in the same direction for that time step."),
-        p("The wind strength is governed by a beta distributions which the user selects ('strong' or 'weak')."),
-        p("The proportion of biomass to move on that time step is randomly sampled from the distribution of wind strengths."),
-        p("All cells move the same proportion of biomass for that step."),
-        p("Biomass will move into the destination cell as long as its biomass is not greater than the full threshold (g dw/m2) [full_thresh]."),
-        p("If the cell is 'too full' the biomass stays in its current cell. This allows cells to 'pile up'."),
-        br(),
-        strong("Prevailing wind direction:"),
-        p("'all' means probability of wind blowing in any direction is random and equal."),
-        p("'up' means probability of wind blowing up is 0.7 and 0.1 for all other directions"),
-        br(),
-        strong("Average wind strength:"),
-        p("On average, on each time step, this proportion of biomass will 
-         be moved in the direction of the wind on that time step")
-        ),
-        
+                
         ################# 
         # ALT STATE TAB #
         #################
